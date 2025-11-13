@@ -112,7 +112,7 @@ export interface LinkedInFeedData {
     cta: string;
 }
 
-// This represents a "Single Type" in a CMS like Strapi for the homepage
+// This represents a "Single Type" in a headless CMS for the homepage
 export interface HomepageData {
   aboutMe: AboutMeData;
   ebookPromo: EbookPromoData;

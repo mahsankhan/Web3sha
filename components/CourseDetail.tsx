@@ -23,23 +23,23 @@ const CourseDetail: React.FC<CourseDetailProps> = ({ course, onBack, onStartFree
       <div className="mb-8">
         <button
           onClick={onBack}
-          className="flex items-center gap-2 text-gray-300 hover:text-primary font-semibold transition-colors duration-300"
+          className="flex items-center gap-2 text-gray-600 dark:text-gray-300 hover:text-primary font-semibold transition-colors duration-300"
         >
           <ArrowLeftIcon />
           Back to All Mastery Tracks
         </button>
       </div>
 
-      <div className="bg-card rounded-lg shadow-lg overflow-hidden">
+      <div className="bg-white dark:bg-card rounded-lg shadow-lg overflow-hidden">
         <div className="grid grid-cols-1 lg:grid-cols-2">
             <div className="p-8 lg:p-10 order-2 lg:order-1">
-                <div className="flex justify-between items-center text-sm text-gray-400 mb-4">
-                    <span className="bg-background px-3 py-1 rounded-full">{course.audience}</span>
-                    <span className="bg-background px-3 py-1 rounded-full">{course.difficulty}</span>
+                <div className="flex justify-between items-center text-sm text-gray-500 dark:text-gray-400 mb-4">
+                    <span className="bg-gray-100 dark:bg-background px-3 py-1 rounded-full">{course.audience}</span>
+                    <span className="bg-gray-100 dark:bg-background px-3 py-1 rounded-full">{course.difficulty}</span>
                 </div>
-                <h1 className="text-3xl md:text-4xl font-bold text-light mb-2">{course.title}</h1>
-                <h2 className="text-lg text-gray-300 mb-6">{course.subtitle}</h2>
-                <p className="text-gray-400 leading-relaxed mb-8">{course.description}</p>
+                <h1 className="text-3xl md:text-4xl font-bold text-dark dark:text-light mb-2">{course.title}</h1>
+                <h2 className="text-lg text-gray-600 dark:text-gray-300 mb-6">{course.subtitle}</h2>
+                <p className="text-gray-500 dark:text-gray-400 leading-relaxed mb-8">{course.description}</p>
                 
                 <button
                     onClick={handleEnrollClick}
@@ -53,13 +53,13 @@ const CourseDetail: React.FC<CourseDetailProps> = ({ course, onBack, onStartFree
             </div>
         </div>
 
-        <div className="bg-background/50 p-8 lg:p-10 border-t border-gray-700">
+        <div className="bg-light dark:bg-background/50 p-8 lg:p-10 border-t border-gray-200 dark:border-gray-700">
             <h3 className="text-2xl font-bold mb-6 flex items-center gap-3"><BookOpenIcon /> Course Curriculum</h3>
             <div className="space-y-4">
                 {course.modules.map((module, index) => (
-                    <div key={index} className="bg-card/60 p-4 rounded-lg border-l-4 border-primary/50">
-                        <h4 className="font-semibold text-light">{module.title}</h4>
-                        <p className="text-sm text-gray-400">{module.description}</p>
+                    <div key={index} className="bg-white/60 dark:bg-card/60 p-4 rounded-lg border-l-4 border-primary/50">
+                        <h4 className="font-semibold text-dark dark:text-light">{module.title}</h4>
+                        <p className="text-sm text-gray-500 dark:text-gray-400">{module.description}</p>
                     </div>
                 ))}
             </div>

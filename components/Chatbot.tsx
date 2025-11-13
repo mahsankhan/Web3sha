@@ -81,20 +81,20 @@ const Chatbot: React.FC<ChatbotProps> = ({ setView, learnContent }) => {
       </button>
 
       {isOpen && (
-        <div className="fixed bottom-24 right-6 w-full max-w-md h-full max-h-[600px] bg-card rounded-lg shadow-2xl flex flex-col z-40 origin-bottom-right transition-all duration-300 animate-fade-in-up">
-          <header className="bg-background/80 p-4 flex justify-between items-center rounded-t-lg border-b border-gray-700">
+        <div className="fixed bottom-24 right-6 w-full max-w-md h-full max-h-[600px] bg-white dark:bg-card rounded-lg shadow-2xl flex flex-col z-40 origin-bottom-right transition-all duration-300 animate-fade-in-up">
+          <header className="bg-gray-100 dark:bg-background/80 p-4 flex justify-between items-center rounded-t-lg border-b border-gray-200 dark:border-gray-700">
             <h3 className="text-lg font-semibold">Strategic AI Analyst</h3>
-            <button onClick={() => setIsOpen(false)} className="text-gray-400 hover:text-white">
+            <button onClick={() => setIsOpen(false)} className="text-gray-500 dark:text-gray-400 hover:text-dark dark:hover:text-white">
               <CloseIcon />
             </button>
           </header>
-          <div className="flex-1 p-4 overflow-y-auto bg-background">
+          <div className="flex-1 p-4 overflow-y-auto bg-light dark:bg-background">
             {messages.map((msg, index) => (
                <div key={index} className={`flex flex-col my-4 ${msg.sender === 'user' ? 'items-end' : 'items-start'}`}>
                 <div className={`flex items-start gap-3 ${msg.sender === 'user' ? 'flex-row-reverse' : 'flex-row'}`}>
                   {msg.sender === 'ai' && <BotIcon />}
                   {msg.sender === 'user' && <UserIcon />}
-                  <div className={`max-w-xs md:max-w-sm rounded-lg px-4 py-2 shadow ${msg.sender === 'user' ? 'bg-primary text-white rounded-br-none' : 'bg-gray-700/50 text-light rounded-bl-none'}`}>
+                  <div className={`max-w-xs md:max-w-sm rounded-lg px-4 py-2 shadow ${msg.sender === 'user' ? 'bg-primary text-white rounded-br-none' : 'bg-gray-200 dark:bg-gray-700/50 text-dark dark:text-light rounded-bl-none'}`}>
                      <div 
                       className="text-sm prose"
                       dangerouslySetInnerHTML={{ __html: markdownToHtml(msg.text) }} 
@@ -107,7 +107,7 @@ const Chatbot: React.FC<ChatbotProps> = ({ setView, learnContent }) => {
                       <button 
                         key={actionIndex}
                         onClick={() => handleActionClick(action.view)}
-                        className="bg-background hover:bg-primary/20 border border-primary/30 text-primary text-sm font-semibold py-2 px-4 rounded-lg transition-colors duration-200"
+                        className="bg-white dark:bg-background hover:bg-primary/10 dark:hover:bg-primary/20 border border-primary/30 text-primary text-sm font-semibold py-2 px-4 rounded-lg transition-colors duration-200"
                       >
                         {action.label}
                       </button>
@@ -119,24 +119,24 @@ const Chatbot: React.FC<ChatbotProps> = ({ setView, learnContent }) => {
             {isLoading && (
               <div className="flex items-start gap-3 my-4 justify-start">
                 <BotIcon />
-                <div className="bg-gray-700/50 rounded-lg px-4 py-3 rounded-bl-none flex items-center space-x-2">
-                  <span className="w-2 h-2 bg-gray-300 rounded-full animate-pulse delay-0"></span>
-                  <span className="w-2 h-2 bg-gray-300 rounded-full animate-pulse delay-150"></span>
-                  <span className="w-2 h-2 bg-gray-300 rounded-full animate-pulse delay-300"></span>
+                <div className="bg-gray-200 dark:bg-gray-700/50 rounded-lg px-4 py-3 rounded-bl-none flex items-center space-x-2">
+                  <span className="w-2 h-2 bg-gray-400 dark:bg-gray-300 rounded-full animate-pulse delay-0"></span>
+                  <span className="w-2 h-2 bg-gray-400 dark:bg-gray-300 rounded-full animate-pulse delay-150"></span>
+                  <span className="w-2 h-2 bg-gray-400 dark:bg-gray-300 rounded-full animate-pulse delay-300"></span>
                 </div>
               </div>
             )}
             <div ref={messagesEndRef} />
           </div>
-          <footer className="p-4 border-t border-gray-700">
-            <div className="flex items-center bg-background rounded-lg">
+          <footer className="p-4 border-t border-gray-200 dark:border-gray-700">
+            <div className="flex items-center bg-light dark:bg-background rounded-lg">
               <input
                 type="text"
                 value={userInput}
                 onChange={(e) => setUserInput(e.target.value)}
                 onKeyPress={handleKeyPress}
                 placeholder="State your objective..."
-                className="w-full bg-transparent text-light px-4 py-2 focus:outline-none"
+                className="w-full bg-transparent text-dark dark:text-light px-4 py-2 focus:outline-none"
                 disabled={isLoading}
               />
               <button onClick={handleSend} disabled={isLoading} className="p-3 text-primary disabled:text-gray-500 hover:text-blue-400">

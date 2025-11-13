@@ -27,29 +27,29 @@ const ContentDetail: React.FC<ContentDetailProps> = ({ content, onBack, onLaunch
       <div className="mb-8">
         <button
           onClick={onBack}
-          className="flex items-center gap-2 text-gray-300 hover:text-primary font-semibold transition-colors duration-300"
+          className="flex items-center gap-2 text-gray-600 dark:text-gray-300 hover:text-primary font-semibold transition-colors duration-300"
         >
           <ArrowLeftIcon />
           Back to Hub
         </button>
       </div>
 
-      <article className="bg-card rounded-lg shadow-lg overflow-hidden">
+      <article className="bg-white dark:bg-card rounded-lg shadow-lg overflow-hidden">
         <img src={content.imageUrl} alt={content.title} className="w-full h-64 md:h-80 object-cover" />
         <div className="p-6 md:p-10">
           <p className="text-primary text-sm font-semibold mb-3">{content.category}</p>
-          <h1 className="text-3xl md:text-4xl font-bold text-light mb-6">{content.title}</h1>
+          <h1 className="text-3xl md:text-4xl font-bold text-dark dark:text-light mb-6">{content.title}</h1>
 
           {content.type === 'article' && content.fullContent && (
             <div
-              className="prose-content text-gray-300 leading-relaxed text-lg"
+              className="prose-content text-gray-600 dark:text-gray-300 leading-relaxed text-lg"
               dangerouslySetInnerHTML={{ __html: markdownToHtml(content.fullContent) }}
             />
           )}
 
           {content.type === 'demo' && (
             <div>
-              <p className="text-gray-300 leading-relaxed text-lg mb-8">{content.description}</p>
+              <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-lg mb-8">{content.description}</p>
               <button
                 onClick={() => onLaunchDemo(content.demoComponent)}
                 className="bg-primary hover:bg-blue-600 text-white font-semibold py-3 px-8 rounded-lg flex items-center justify-center gap-2 transition-transform transform hover:scale-105 duration-300"

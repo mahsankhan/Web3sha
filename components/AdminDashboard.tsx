@@ -12,7 +12,7 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ leads }) => {
             <div className="text-center mb-12">
                 <h2 className="text-3xl md:text-4xl font-bold mb-4">Lead Management Dashboard</h2>
                 <p className="max-w-2xl mx-auto text-gray-400">
-                    View and export all leads captured from your website. Content (articles, resources, courses) would be managed via your external CMS (e.g., Strapi).
+                    View and export all leads captured from your website. Content (articles, resources, courses) would be managed via your external headless CMS.
                 </p>
             </div>
             <LeadsViewer leads={leads} />

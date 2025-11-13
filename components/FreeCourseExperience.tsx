@@ -49,15 +49,15 @@ const FreeCourseExperience: React.FC<FreeCourseExperienceProps> = ({ course, onE
 
     const renderLearning = () => (
         <>
-            <div className="bg-background/50 p-8 lg:p-10 border-t border-gray-700">
+            <div className="bg-light dark:bg-background/50 p-8 lg:p-10 border-t border-gray-200 dark:border-gray-700">
                 <h3 className="text-2xl font-bold mb-6">Course Modules</h3>
                 <div className="space-y-4">
                     {course.modules.map((module, index) => (
-                        <div key={index} className="bg-card/60 p-4 rounded-lg flex items-start gap-4">
+                        <div key={index} className="bg-white/60 dark:bg-card/60 p-4 rounded-lg flex items-start gap-4">
                             <div className="w-8 h-8 flex-shrink-0 bg-primary/20 text-primary rounded-full flex items-center justify-center font-bold">{index + 1}</div>
                             <div>
-                                <h4 className="font-semibold text-light">{module.title}</h4>
-                                <p className="text-sm text-gray-400">{module.description}</p>
+                                <h4 className="font-semibold text-dark dark:text-light">{module.title}</h4>
+                                <p className="text-sm text-gray-500 dark:text-gray-400">{module.description}</p>
                             </div>
                         </div>
                     ))}
@@ -75,7 +75,7 @@ const FreeCourseExperience: React.FC<FreeCourseExperienceProps> = ({ course, onE
         <div className="p-8 lg:p-12 text-center">
             <CertificateIcon />
             <h3 className="text-2xl font-bold mb-4 mt-4">Claim Your Certificate</h3>
-            <p className="text-gray-400 mb-8 max-w-md mx-auto">Enter your name as you would like it to appear on your blockchain-verified certificate of completion.</p>
+            <p className="text-gray-500 dark:text-gray-400 mb-8 max-w-md mx-auto">Enter your name as you would like it to appear on your blockchain-verified certificate of completion.</p>
             <form onSubmit={handleClaim} className="max-w-sm mx-auto flex flex-col gap-4">
                 <input 
                     type="text" 
@@ -83,7 +83,7 @@ const FreeCourseExperience: React.FC<FreeCourseExperienceProps> = ({ course, onE
                     onChange={e => setName(e.target.value)}
                     placeholder="e.g., Jane Doe"
                     required
-                    className="w-full text-center bg-background border border-gray-600 rounded-md py-3 px-4 text-light focus:outline-none focus:ring-2 focus:ring-primary"
+                    className="w-full text-center bg-light dark:bg-background border border-gray-300 dark:border-gray-600 rounded-md py-3 px-4 text-dark dark:text-light focus:outline-none focus:ring-2 focus:ring-primary"
                 />
                 <button type="submit" className="w-full bg-primary hover:bg-blue-600 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-300">
                     Mint My Certificate
@@ -97,7 +97,7 @@ const FreeCourseExperience: React.FC<FreeCourseExperienceProps> = ({ course, onE
         <div className="p-8 lg:p-12 text-center">
             <div className="w-12 h-12 border-4 border-primary border-t-transparent rounded-full animate-spin mx-auto mb-6"></div>
             <h3 className="text-2xl font-bold mb-2">Issuing Certificate...</h3>
-            <p className="text-gray-400">{mintingSteps[mintingSubStep]}</p>
+            <p className="text-gray-500 dark:text-gray-400">{mintingSteps[mintingSubStep]}</p>
         </div>
     );
 
@@ -107,14 +107,14 @@ const FreeCourseExperience: React.FC<FreeCourseExperienceProps> = ({ course, onE
                 <CertificateIcon />
             </div>
             <h3 className="text-3xl font-bold mb-2">Congratulations, {name}!</h3>
-            <p className="text-gray-400 mb-8">You have successfully earned your Certificate of Completion.</p>
+            <p className="text-gray-500 dark:text-gray-400 mb-8">You have successfully earned your Certificate of Completion.</p>
 
-            <div className="bg-background rounded-lg p-6 max-w-lg mx-auto text-left border border-primary/30 shadow-lg">
+            <div className="bg-light dark:bg-background rounded-lg p-6 max-w-lg mx-auto text-left border border-primary/30 shadow-lg">
                 <h4 className="font-bold text-lg text-primary">Certificate of Completion</h4>
-                <p className="text-gray-300 mb-4">This certifies that</p>
-                <p className="text-2xl font-bold text-light mb-4">{name}</p>
-                <p className="text-gray-300">has successfully completed the course</p>
-                <p className="font-semibold text-light mb-6">{course.title}</p>
+                <p className="text-gray-600 dark:text-gray-300 mb-4">This certifies that</p>
+                <p className="text-2xl font-bold text-dark dark:text-light mb-4">{name}</p>
+                <p className="text-gray-600 dark:text-gray-300">has successfully completed the course</p>
+                <p className="font-semibold text-dark dark:text-light mb-6">{course.title}</p>
                 <p className="text-xs text-gray-500">Simulated Transaction Hash:</p>
                 <p className="text-xs text-green-400 break-all font-mono">{transactionHash}</p>
             </div>
@@ -123,7 +123,7 @@ const FreeCourseExperience: React.FC<FreeCourseExperienceProps> = ({ course, onE
                  <NextSteps setView={setView} courses={courses} currentCourse={course} />
             </div>
 
-            <button onClick={onExit} className="mt-8 text-sm text-gray-400 hover:text-primary">
+            <button onClick={onExit} className="mt-8 text-sm text-gray-500 dark:text-gray-400 hover:text-primary">
                 Or, return to all courses
             </button>
         </div>
@@ -135,16 +135,16 @@ const FreeCourseExperience: React.FC<FreeCourseExperienceProps> = ({ course, onE
              <div className="mb-8">
                 <button
                     onClick={onExit}
-                    className="flex items-center gap-2 text-gray-300 hover:text-primary font-semibold transition-colors duration-300"
+                    className="flex items-center gap-2 text-gray-600 dark:text-gray-300 hover:text-primary font-semibold transition-colors duration-300"
                 >
                     <ArrowLeftIcon />
                     Exit Course
                 </button>
             </div>
-            <div className="bg-card rounded-lg shadow-lg">
+            <div className="bg-white dark:bg-card rounded-lg shadow-lg">
                  <div className="p-8 text-center">
-                    <h1 className="text-3xl font-bold text-light">{course.title}</h1>
-                    <p className="text-gray-400">{course.subtitle}</p>
+                    <h1 className="text-3xl font-bold text-dark dark:text-light">{course.title}</h1>
+                    <p className="text-gray-500 dark:text-gray-400">{course.subtitle}</p>
                 </div>
                 {step === 'learning' && renderLearning()}
                 {step === 'claiming' && renderClaiming()}

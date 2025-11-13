@@ -8,6 +8,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
+        darkMode: 'class',
         theme: {
           extend: {
             colors: {
@@ -35,6 +36,10 @@
       }
       .animate-shimmer {
         animation: shimmer 2s infinite linear;
+        background: linear-gradient(to right, #e2e8f0 4%, #f1f5f9 25%, #e2e8f0 36%);
+        background-size: 1000px 100%;
+      }
+      .dark .animate-shimmer {
         background: linear-gradient(to right, #161b33 4%, #1f2647 25%, #161b33 36%);
         background-size: 1000px 100%;
       }
@@ -67,7 +72,7 @@
 }
 </script>
 </head>
-  <body class="bg-background">
+  <body>
     <div id="root"></div>
     <script type="module" src="/index.tsx"></script>
   </body>

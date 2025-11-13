@@ -8,7 +8,7 @@ interface CourseCardProps {
 
 const CourseCard: React.FC<CourseCardProps> = ({ course, onSelect }) => (
   <div 
-    className="bg-card rounded-lg overflow-hidden shadow-lg hover:shadow-primary/20 transition-all duration-300 transform hover:-translate-y-2 flex flex-col cursor-pointer group"
+    className="bg-white dark:bg-card rounded-lg overflow-hidden shadow-lg hover:shadow-primary/20 transition-all duration-300 transform hover:-translate-y-2 flex flex-col cursor-pointer group"
     onClick={onSelect}
   >
     <div className="relative">
@@ -18,13 +18,13 @@ const CourseCard: React.FC<CourseCardProps> = ({ course, onSelect }) => (
       </div>
     </div>
     <div className="p-6 flex flex-col flex-grow">
-      <div className="flex justify-between items-center text-sm text-gray-400 mb-2">
+      <div className="flex justify-between items-center text-sm text-gray-500 dark:text-gray-400 mb-2">
         <span>{course.audience}</span>
         <span>{course.difficulty}</span>
       </div>
-      <h3 className="text-xl font-bold mb-2 text-light group-hover:text-primary transition-colors">{course.title}</h3>
-      <p className="text-gray-400 text-sm flex-grow mb-4">{course.subtitle}</p>
-      <button className="mt-auto w-full bg-background hover:bg-primary/20 text-primary font-semibold py-2 px-4 rounded-lg transition-colors duration-300">
+      <h3 className="text-xl font-bold mb-2 text-dark dark:text-light group-hover:text-primary transition-colors">{course.title}</h3>
+      <p className="text-gray-500 dark:text-gray-400 text-sm flex-grow mb-4">{course.subtitle}</p>
+      <button className="mt-auto w-full bg-light dark:bg-background hover:bg-primary/10 dark:hover:bg-primary/20 text-primary font-semibold py-2 px-4 rounded-lg transition-colors duration-300">
         View Mastery Track
       </button>
     </div>
@@ -50,7 +50,7 @@ const CoursesSection: React.FC<CoursesSectionProps> = ({ courses, onCourseSelect
       className={`px-4 py-2 text-sm font-semibold rounded-full transition-colors duration-300 ${
         filter === type
           ? 'bg-primary text-white'
-          : 'bg-card hover:bg-card/70 text-gray-300'
+          : 'bg-white dark:bg-card hover:bg-gray-200/70 dark:hover:bg-card/70 text-gray-700 dark:text-gray-300'
       }`}
     >
       {label}
@@ -61,7 +61,7 @@ const CoursesSection: React.FC<CoursesSectionProps> = ({ courses, onCourseSelect
     <section>
       <div className="text-center mb-12">
         <h2 className="text-3xl md:text-4xl font-bold mb-4">My Web3 Mastery Tracks</h2>
-        <p className="max-w-3xl mx-auto text-gray-400">
+        <p className="max-w-3xl mx-auto text-gray-500 dark:text-gray-400">
           Beyond mere information, these are the structured learning paths I have personally engineered to provide the most direct route to Web3 mastery. Choose your track and begin the journey from participant to leader.
         </p>
       </div>

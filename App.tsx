@@ -21,10 +21,13 @@ import LinkedInFeed from './components/LinkedInFeed';
 import EbookPromo from './components/EbookPromo';
 import TermsOfServiceModal from './components/TermsOfServiceModal';
 
+export type Theme = 'light' | 'dark';
 
 const App: React.FC = () => {
   const [currentView, setCurrentView] = useState<View>('home');
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const [theme, setTheme] = useState<Theme>('dark');
 
   // Data states, populated from the API service for CMS readiness
   const [learnContent, setLearnContent] = useState<Content[]>([]);
@@ -45,11 +48,37 @@ const App: React.FC = () => {
   const [selectedCourse, setSelectedCourse] = useState<Course | null>(null);
   const [activeFreeCourse, setActiveFreeCourse] = useState<Course | null>(null);
 
+  // Initialize theme from localStorage or system preference
+  useEffect(() => {
+    const savedTheme = localStorage.getItem('theme') as Theme | null;
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (savedTheme) {
+      setTheme(savedTheme);
+    } else if (prefersDark) {
+      setTheme('dark');
+    } else {
+      setTheme('light');
+    }
+  }, []);
+
+  // Apply theme class to root element and save to localStorage
+  useEffect(() => {
+    const root = window.document.documentElement;
+    root.classList.remove('light', 'dark');
+    root.classList.add(theme);
+    localStorage.setItem('theme', theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme(prevTheme => prevTheme === 'dark' ? 'light' : 'dark');
+  };
+
   // Fetch all data on initial app load from the centralized apiService
   useEffect(() => {
     const loadAppData = async () => {
       try {
         setIsLoading(true);
+        setError(null);
         const [
             learn, 
             resources, 
@@ -80,6 +109,7 @@ const App: React.FC = () => {
 
       } catch (error) {
         console.error("Failed to load application data from API", error);
+        setError("Failed to load essential application data. Please try refreshing the page.");
       } finally {
         setIsLoading(false);
       }
@@ -95,6 +125,7 @@ const App: React.FC = () => {
       setSessionUnlocked(true); // Unlock content for the current session
     } catch (error) {
       console.error("Failed to submit lead", error);
+      throw error; // Re-throw to allow component-level error handling (e.g., stopping a spinner)
     }
   };
 
@@ -116,7 +147,21 @@ const App: React.FC = () => {
 
 
   const renderContent = () => {
-    if (isLoading || !homepageData) {
+    if (isLoading) {
+      return <HomePageSkeleton />;
+    }
+
+    if (error) {
+      return (
+        <div className="flex flex-col items-center justify-center text-center py-20 px-4">
+            <h2 className="text-2xl font-bold text-red-500 mb-4">An Error Occurred</h2>
+            <p className="text-gray-500 dark:text-gray-300 max-w-md">{error}</p>
+        </div>
+      );
+    }
+
+    if (!homepageData) {
+      // Fallback if data is missing without an error
       return <HomePageSkeleton />;
     }
 
@@ -138,6 +183,7 @@ const App: React.FC = () => {
                   resourcesContent={resourcesContent}
                   isUnlocked={sessionUnlocked}
                   onUnlock={handleUnlock}
+                  theme={theme}
                 />;
       case 'courses':
          return <CoursesSection courses={courses} onCourseSelect={handleSelectCourse} />;
@@ -157,8 +203,8 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background text-light font-sans flex flex-col">
-      <Header currentView={currentView} setView={setCurrentView} />
+    <div className="min-h-screen bg-light dark:bg-background text-dark dark:text-light font-sans flex flex-col">
+      <Header currentView={currentView} setView={setCurrentView} theme={theme} toggleTheme={toggleTheme} />
       <main className="flex-grow container mx-auto px-4 py-8 md:py-16">
         {renderContent()}
       </main>

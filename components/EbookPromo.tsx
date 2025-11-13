@@ -11,10 +11,10 @@ const EbookPromo: React.FC<EbookPromoProps> = ({ setView, data }) => {
   return (
     <div className="py-16 md:py-24">
         <div className="container mx-auto px-4">
-            <div className="bg-card/50 rounded-lg shadow-lg overflow-hidden flex flex-col md:flex-row items-center border border-primary/20">
+            <div className="bg-gray-100/50 dark:bg-card/50 rounded-lg shadow-lg overflow-hidden flex flex-col md:flex-row items-center border border-primary/20">
                 <div className="md:w-1/2 p-8 md:p-12 text-center md:text-left">
                     <h2 className="text-3xl md:text-4xl font-bold mb-4">{data.headline}</h2>
-                    <p className="text-lg text-gray-300 mb-8">
+                    <p className="text-lg text-gray-600 dark:text-gray-300 mb-8">
                         {data.description}
                     </p>
                     <button 

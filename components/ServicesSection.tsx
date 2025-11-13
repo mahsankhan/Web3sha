@@ -12,14 +12,14 @@ const CheckIcon = () => (
 );
 
 const ServiceTierCard: React.FC<{ tier: ServiceTier }> = ({ tier }) => (
-    <div className={`bg-card rounded-lg p-8 shadow-lg transition-all duration-300 transform ${tier.isFeatured ? 'border-2 border-primary scale-105' : 'border border-gray-700 hover:-translate-y-2'}`}>
+    <div className={`bg-white dark:bg-card rounded-lg p-8 shadow-lg transition-all duration-300 transform ${tier.isFeatured ? 'border-2 border-primary scale-105' : 'border border-gray-200 dark:border-gray-700 hover:-translate-y-2'}`}>
         {tier.isFeatured && (
             <div className="text-center mb-4">
                 <span className="bg-primary text-white text-xs font-bold px-3 py-1 rounded-full uppercase">Most Popular</span>
             </div>
         )}
         <h3 className="text-2xl font-bold text-center mb-2">{tier.name}</h3>
-        <p className="text-center text-gray-400 mb-6 h-16">{tier.description}</p>
+        <p className="text-center text-gray-500 dark:text-gray-400 mb-6 h-16">{tier.description}</p>
         <p className="text-4xl font-bold text-center mb-6">
             {tier.price}
         </p>
@@ -27,7 +27,7 @@ const ServiceTierCard: React.FC<{ tier: ServiceTier }> = ({ tier }) => (
             {tier.features.map((feature, index) => (
                 <li key={index} className="flex items-start">
                     <CheckIcon />
-                    <span className="ml-3 text-gray-300">{feature}</span>
+                    <span className="ml-3 text-gray-700 dark:text-gray-300">{feature}</span>
                 </li>
             ))}
         </ul>
@@ -35,7 +35,7 @@ const ServiceTierCard: React.FC<{ tier: ServiceTier }> = ({ tier }) => (
             href={tier.gumroadLink} 
             target="_blank" 
             rel="noopener noreferrer"
-            className={`block w-full text-center font-semibold py-3 px-6 rounded-lg transition-colors duration-300 ${tier.isFeatured ? 'bg-primary hover:bg-blue-600 text-white' : 'bg-background hover:bg-gray-700/50 text-light'}`}
+            className={`block w-full text-center font-semibold py-3 px-6 rounded-lg transition-colors duration-300 ${tier.isFeatured ? 'bg-primary hover:bg-blue-600 text-white' : 'bg-gray-100 dark:bg-background hover:bg-gray-200/50 dark:hover:bg-gray-700/50 text-dark dark:text-light'}`}
         >
             Join The Inner Circle
         </a>
@@ -71,12 +71,12 @@ const AIAdvisor: React.FC = () => {
     };
 
     return (
-        <div className="bg-card/70 rounded-lg p-6 md:p-8 mt-16 border border-primary/20 shadow-lg max-w-4xl mx-auto">
+        <div className="bg-gray-100/70 dark:bg-card/70 rounded-lg p-6 md:p-8 mt-16 border border-primary/20 shadow-lg max-w-4xl mx-auto">
             <div className="flex items-center gap-4 mb-4">
                  <SparklesIcon />
                 <h3 className="text-2xl font-bold">My AI Membership Advisor</h3>
             </div>
-            <p className="text-gray-400 mb-6">Select your primary goals, and my AI—trained on my frameworks—will recommend the perfect membership tier for you.</p>
+            <p className="text-gray-500 dark:text-gray-400 mb-6">Select your primary goals, and my AI—trained on my frameworks—will recommend the perfect membership tier for you.</p>
             
             <div className="flex flex-wrap gap-3 mb-6">
                 {GOAL_OPTIONS.map(goal => (
@@ -86,7 +86,7 @@ const AIAdvisor: React.FC = () => {
                         className={`px-4 py-2 text-sm font-semibold rounded-full transition-colors duration-300 ${
                             selectedGoals.includes(goal)
                                 ? 'bg-primary text-white'
-                                : 'bg-background hover:bg-card/70 text-gray-300'
+                                : 'bg-white dark:bg-background hover:bg-gray-200 dark:hover:bg-card/70 text-gray-700 dark:text-gray-300'
                         }`}
                     >
                         {goal}
@@ -103,7 +103,7 @@ const AIAdvisor: React.FC = () => {
             </button>
 
             {(isLoading || recommendation) && (
-                 <div className="mt-6 bg-background/50 rounded-lg p-6 border border-gray-700">
+                 <div className="mt-6 bg-white/50 dark:bg-background/50 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
                     {isLoading ? (
                         <div className="space-y-3">
                             <SkeletonLoader className="h-5 w-3/4" />
@@ -111,7 +111,7 @@ const AIAdvisor: React.FC = () => {
                             <SkeletonLoader className="h-5 w-1/2" />
                         </div>
                     ) : (
-                        <p className="text-lg text-light" dangerouslySetInnerHTML={{ __html: recommendation.replace(/\*\*(.*?)\*\*/g, '<strong class="text-primary">$1</strong>') }} />
+                        <p className="text-lg text-dark dark:text-light" dangerouslySetInnerHTML={{ __html: recommendation.replace(/\*\*(.*?)\*\*/g, '<strong class="text-primary">$1</strong>') }} />
                     )}
                 </div>
             )}
@@ -129,7 +129,7 @@ const ServicesSection: React.FC<ServicesSectionProps> = ({ tiers }) => {
         <section>
             <div className="text-center mb-12">
                 <h2 className="text-3xl md:text-4xl font-bold mb-4">Join My Inner Circle</h2>
-                <p className="max-w-3xl mx-auto text-gray-400">
+                <p className="max-w-3xl mx-auto text-gray-500 dark:text-gray-400">
                     Information is a commodity. Actionable intelligence, proprietary frameworks, and an elite network are what create leaders. My memberships are your induction into an inner circle of Web3 strategists I've personally curated. This is your decisive advantage.
                 </p>
             </div>

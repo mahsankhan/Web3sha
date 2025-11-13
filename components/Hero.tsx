@@ -36,17 +36,17 @@ const Hero: React.FC<HeroProps> = ({ setView }) => {
        <img 
           src="https://picsum.photos/seed/m-ahsan-khan-pro/200/200" 
           alt="Muhammad Ahsan Khan"
-          className="w-32 h-32 rounded-full mx-auto mb-6 border-4 border-card shadow-lg"
+          className="w-32 h-32 rounded-full mx-auto mb-6 border-4 border-white dark:border-card shadow-lg"
         />
-      <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-light mb-4 animate-shimmer bg-clip-text text-transparent bg-gradient-to-r from-light to-gray-400">
+      <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-dark dark:text-light mb-4 bg-clip-text text-transparent bg-gradient-to-r from-dark to-gray-600 dark:from-light dark:to-gray-400">
         Architecting the Future of Web3.
       </h1>
       <p className="text-2xl text-primary font-semibold mb-6">I turn complexity into your strategic advantage.</p>
-      <p className="max-w-3xl mx-auto text-lg md:text-xl text-gray-300 mb-8">
+      <p className="max-w-3xl mx-auto text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-8">
         As a Web3 strategist, advisor, and R&D expert, I help visionary founders and enterprises build category-defining ventures. State your critical challenge, and my AI—trained on my frameworks—will architect your first step.
       </p>
       
-      <div className="max-w-2xl mx-auto bg-card shadow-lg rounded-lg p-6 border border-gray-700">
+      <div className="max-w-2xl mx-auto bg-white dark:bg-card shadow-lg rounded-lg p-6 border border-gray-200 dark:border-gray-700">
         <form onSubmit={handleGenerateRoadmap}>
           <div className="flex flex-col sm:flex-row gap-4">
             <input
@@ -54,7 +54,7 @@ const Hero: React.FC<HeroProps> = ({ setView }) => {
               value={goal}
               onChange={(e) => setGoal(e.target.value)}
               placeholder="e.g., 'Design a token model for a DeFi protocol'"
-              className="w-full bg-background border border-gray-600 rounded-md py-3 px-4 text-light focus:outline-none focus:ring-2 focus:ring-primary text-base"
+              className="w-full bg-light dark:bg-background border border-gray-300 dark:border-gray-600 rounded-md py-3 px-4 text-dark dark:text-light focus:outline-none focus:ring-2 focus:ring-primary text-base"
               disabled={isLoading}
             />
             <button
@@ -73,7 +73,7 @@ const Hero: React.FC<HeroProps> = ({ setView }) => {
         </form>
         
         {isLoading && (
-          <div className="mt-6 p-4 bg-background/50 rounded-lg text-center">
+          <div className="mt-6 p-4 bg-gray-100/50 dark:bg-background/50 rounded-lg text-center">
               <SkeletonLoader className="h-5 w-3/4 mx-auto mb-4" />
               <SkeletonLoader className="h-5 w-1/2 mx-auto mb-6" />
               <SkeletonLoader className="h-9 w-28 mx-auto" />
@@ -81,11 +81,11 @@ const Hero: React.FC<HeroProps> = ({ setView }) => {
         )}
 
         {roadmap && !isLoading && (
-          <div className="mt-6 p-4 bg-background/50 rounded-lg text-center animate-fade-in">
-            <p className="text-lg text-gray-300" dangerouslySetInnerHTML={{ __html: roadmap.replace(/\*\*(.*?)\*\*/g, '<strong class="text-primary">$1</strong>') }} />
+          <div className="mt-6 p-4 bg-gray-100/50 dark:bg-background/50 rounded-lg text-center animate-fade-in">
+            <p className="text-lg text-gray-700 dark:text-gray-300" dangerouslySetInnerHTML={{ __html: roadmap.replace(/\*\*(.*?)\*\*/g, '<strong class="text-primary">$1</strong>') }} />
             <button
               onClick={getActionForRoadmap(roadmap)}
-              className="mt-4 bg-card hover:bg-gray-700/50 text-light font-semibold py-2 px-6 rounded-lg shadow-lg transition-transform transform hover:scale-105 duration-300"
+              className="mt-4 bg-white dark:bg-card hover:bg-gray-200/50 dark:hover:bg-gray-700/50 text-dark dark:text-light font-semibold py-2 px-6 rounded-lg shadow-lg transition-transform transform hover:scale-105 duration-300"
             >
               Let's Go
             </button>

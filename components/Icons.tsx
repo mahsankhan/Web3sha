@@ -33,8 +33,8 @@ export const UserIcon: React.FC = () => (
 );
 
 export const BotIcon: React.FC = () => (
-    <div className="w-8 h-8 rounded-full bg-gray-600 flex items-center justify-center flex-shrink-0">
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-light" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+    <div className="w-8 h-8 rounded-full bg-gray-400 dark:bg-gray-600 flex items-center justify-center flex-shrink-0">
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-dark dark:text-light" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 7.5l.415-.207a.75.75 0 011.06 0l.415.207M8.25 15.75l.415.207a.75.75 0 001.06 0l.415-.207M8.25 7.5v8.25M15.75 7.5l-.415-.207a.75.75 0 00-1.06 0l-.415.207M15.75 15.75l-.415.207a.75.75 0 01-1.06 0l-.415-.207M15.75 7.5v8.25m-7.5-4.125h7.5" />
         </svg>
     </div>
@@ -145,5 +145,17 @@ export const CommentIcon: React.FC = () => (
 export const ShareIcon: React.FC = () => (
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
         <path strokeLinecap="round" strokeLinejoin="round" d="M7.217 10.907a2.25 2.25 0 100 2.186m0-2.186c.195.025.39.05.588.08a2.25 2.25 0 011.632 3.003l-1.85 3.303a1.125 1.125 0 001.396 1.396l3.303-1.85a2.25 2.25 0 013.004 1.632c.03.198.055.393.08.588a2.25 2.25 0 102.186 0c-.025-.195-.05-.39-.08-.588a2.25 2.25 0 01-1.632-3.004l-3.303-1.85a1.125 1.125 0 00-1.396-1.396l-1.85 3.303a2.25 2.25 0 01-3.003-1.632.906.906 0 01-.08-.588z" />
+    </svg>
+);
+
+export const SunIcon: React.FC = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
+    </svg>
+);
+
+export const MoonIcon: React.FC = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
     </svg>
 );
